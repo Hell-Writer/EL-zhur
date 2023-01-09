@@ -1,0 +1,11 @@
+
+<footer class="border-top text-center py-3">
+  <ul class="nav justify-content-center" style="color:red">
+  {% for l in context.lower_menu%}
+    <li class ="nav-item">  
+      <a href="{{l.url}}" class="nav-link">{{l.name}}</a>
+    </li> 
+  {%endfor%}
+  </ul>
+    <p>© 2023 Copyright Elzhur</p>    
+</footer>

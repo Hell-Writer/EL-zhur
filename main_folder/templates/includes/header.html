@@ -1,0 +1,21 @@
+
+<header>
+  <nav class="navbar navbar-light" style="background-color:crimson">
+    <div class="container">
+      <a class="navbar-brand">
+        <img src="static/img/Elzhur_logo.png" width="30" height="30" class="d-inline-block align-top rounded" alt="">
+        <span style="color:aqua">El</span><span style="color:white">zhur</span>
+      </a>
+
+      <ul class="nav nav-pills">
+      {% for m in context.menu%}
+       <li class="nav-item" > <a href="{{m.url}}"  {% if m.url==request.base_url%} class="nav-link active" style="background-color:darkred"{%else%}class="nav-link"{% endif %} style="color:white"> {{m.name}} </a></li>
+      {% endfor %}
+      <li class="nav-item" > <a href="{{url_for("login")}}"  {% if url_for("login") == request.path%} class="nav-link active" style="background-color:darkred"{%else%}class="nav-link"{% endif %} style="color:white"> Вход </a></li>
+      {% if "userLogged" in session %}
+      <li class="nav-item" > <a href="{{url_for("profile")}}"  {% if url_for("profile") == request.path%} class="nav-link active" style="background-color:darkred"{%else%}class="nav-link"{% endif %} style="color:white"> Вход </a></li>
+      {%endif%}
+    </ul>
+    </div>    
+  </nav>      
+</header> 

@@ -1,0 +1,23 @@
+{%extends 'base.html'%}
+
+{%block title%}Вход в систему{%endblock%}
+{%block content%}
+<div class="container py-5">
+    <div class="row justify-content-center" style="color:white">
+    <div class="col-md-5 card card-header">
+    <form action="/login" method="post" class ="form-login">
+    <div class="form-group row justify-content-center">
+        {%for row in context.form%}
+        <p><div class="card col-md-3 text-center" style="background-color:crimson"><label>{{row.label}}</label></div></p>
+        {%if row.type == 'text'%}
+        <p><input type="{{row.type}}" class="form-control" name="{{row.name}}" value="{{row.value}}" /></p>
+        {%endif%}
+        {%endfor%}
+        <p><div class="card col-md-3" style="background-color:crimson"><input type="submit" value="Войти" /></div>
+    </div>
+
+    </form>
+    </div>
+    </div>
+</div>
+{%endblock%}

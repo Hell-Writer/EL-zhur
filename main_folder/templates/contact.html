@@ -1,0 +1,31 @@
+{%extends 'base.html'%}
+
+{%block title%}Форма обратной связи{%endblock%}
+{%block content%}
+<div class="container py-5">
+{%for cat, msg in get_flashed_messages(True) %}
+<div class="container col-md-4 text-center">
+<div class="flash {{cat}}">{{msg}}</div>
+</div>
+{%endfor%}
+    <div class="row justify-content-center" style="color:white">
+    <div class="col-md-8 p-5 card card-header">
+    <form action="/contact" method="post" class ="form-contact">
+    <div class="form-group">
+        {%for row in context.form%}
+        <p><div class="card col-md-10 offset-md-1 text-center" style="background-color:crimson"><label>{{row.label}}</label></div></p>
+        {%if row.type == 'text'%}
+        <p><input type="{{row.type}}" class="form-control" name="{{row.name}}" value="{{row.value}}" /></p>
+        {%elif row.type == 'textarea'%}
+        <p><textarea name="{{row.name}}" class="form-control" rows=7 cols=40></textarea>
+        {%endif%}
+        {%endfor%}
+        <p><div class="card" style="background-color:crimson"><input type="submit" value="Отправить" /></div>
+    </div>
+
+    </form>
+    </div>
+    </div>
+
+</div>
+{%endblock%}
